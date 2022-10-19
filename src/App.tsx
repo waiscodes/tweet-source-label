@@ -13,10 +13,14 @@ export interface Config {
 const App = () => {
 	const [config, setConfig] = useState({} as Config);
 
+	const makeTweet = async (tweet: string) => {
+		console.log(tweet);
+	};
+
 	return (
 		<div>
 			<AppConfig setConfig={setConfig} />
-			<Tweet />
+			<Tweet makeTweet={makeTweet} />
 		</div>
 	);
 };
