@@ -1424,6 +1424,11 @@ trim-repeated@^1.0.0:
   dependencies:
     escape-string-regexp "^1.0.2"
 
+twitter-api-v2@^1.12.8:
+  version "1.12.8"
+  resolved "https://registry.yarnpkg.com/twitter-api-v2/-/twitter-api-v2-1.12.8.tgz#a93abeeeb8785b0a8b181b8020e89dcaf943ff02"
+  integrity sha512-2gRb1WEjuWWLPm2Sj90BH6VKx6rBXXPERP2v5fmhSwN8kvIRghCvKXwVF0NQz/qZA9k/VSqtygAe+YFlrr36RQ==
+
 typescript@^4.6.4:
   version "4.8.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.4.tgz#c464abca159669597be5f96b8943500b238e60e6"

@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { Config } from "../App";
 
-const AppConfig = () => {
+interface IAppConfig {
+	setConfig: (config: Config) => void;
+}
+
+const AppConfig: React.FC<IAppConfig> = ({ setConfig }) => {
+	const [appKey, setAppKey] = useState("");
+	const [appSecret, setAppSecret] = useState("");
+	const [accessToken, setAccessToken] = useState("");
+	const [accessSecret, setAccessSecret] = useState("");
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		if (appKey && appSecret && accessToken && accessSecret) {
+			setConfig({
+				appKey,
+				appSecret,
+				accessToken,
+				accessSecret,
+			});
+		}
+	};
+
 	return (
 		<div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-			<form className="space-y-6" action="#">
+			<form className="space-y-6" onSubmit={handleSubmit}>
 				<h5 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h5>
 				<div>
 					<label htmlFor="appKey" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -13,6 +35,8 @@ const AppConfig = () => {
 						type="text"
 						name="appKey"
 						id="appKey"
+						value={appKey}
+						onChange={(e) => setAppKey(e.target.value)}
 						className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
 						placeholder="App Key"
 					/>
@@ -25,6 +49,8 @@ const AppConfig = () => {
 						type="text"
 						name="appSecret"
 						id="appSecret"
+						value={appSecret}
+						onChange={(e) => setAppSecret(e.target.value)}
 						className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
 						placeholder="App Secret"
 					/>
@@ -37,6 +63,8 @@ const AppConfig = () => {
 						type="text"
 						name="accessToken"
 						id="accessToken"
+						value={accessToken}
+						onChange={(e) => setAccessToken(e.target.value)}
 						className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
 						placeholder="Access Token"
 					/>
@@ -49,6 +77,8 @@ const AppConfig = () => {
 						type="text"
 						name="accessSecret"
 						id="accessSecret"
+						value={accessSecret}
+						onChange={(e) => setAccessSecret(e.target.value)}
 						className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
 						placeholder="Access Secret"
 					/>
